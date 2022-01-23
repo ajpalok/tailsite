@@ -1,0 +1,13 @@
+---
+layout: compress
+---
+{%- if site.posts -%}
+  {%- assign posts = site.posts -%}
+{%- endif -%}
+
+{%- if site.show_hero %}
+  {%- assign offset = 1 %}
+{%- else %}
+  {%- assign offset = 0 %}
+{%- endif %}
+{"signatories": [{%- for post in posts offset: offset %}{"name": "{{ post.title | strip_html | escape }}", "url": "{{ site.baseurl | prepend: site.url }}{{ post.url }}", "image_url": "{%- if post.image -%}{{ post.image }}{%- else -%}{{ site.baseurl | prepend: site.url }}/assets/img/off.jpg{%- endif -%}", {%- assign category = site.categories | where: 'short_name' , post.category | first %}{% if category %}"category": "{{ category.name }}", "category_url": "{{category.url}}",{% endif %} "body": "{{ post.excerpt | strip_html | truncate: 50 }}"}{%- unless forloop.last %},{%- endunless %}{%- endfor %}]}
