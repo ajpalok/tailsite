@@ -1,13 +1,13 @@
 ---
 layout: page
-title: Members
+title: 
 description: Meet our respective Members and content creators of our Family..
 ---
 
 <section class="text-gray-600 body-font">
   <div class="container mx-auto px-5 py-10 flex items-center justify-center flex-col">
     <div class="text-center lg:w-2/3 w-full">
-      <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">{{ page.title | capitalized }}</h1>
+      <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">{{ page.title | capitalized | default: 'Members' }}</h1>
       <p class="mb-8 leading-relaxed">{{ page.description }}</p>
     </div>
   </div>
@@ -16,20 +16,22 @@ description: Meet our respective Members and content creators of our Family..
 
 {%- for author in site.authors -%}
 
-<section class="max-w-sm h-auto mx-auto my-20 rounded-md overflow-hidden shadow-lg ">
-  <div class="w-full h-24" style="background: url({{ author.profile_cover }}) no-repeat center; background-size: cover;"></div>
-  <img class="object-cover rounded-full h-36 w-36 mx-auto m-1 p-1 border-4 border-red-600" src="{{ author.profile_image }}" alt="{{ author.name }}" />
+<section class="max-w-sm h-auto mx-auto my-20 rounded-md overflow-hidden shadow-lg">
+  {% if site.author_cover %}
+  <div class="w-full h-24" style="background: url({% if author.profile_cover %}{{ author.profile_cover }}{% else %}/assets/img/off.jpg{% endif %}) no-repeat center; background-size: cover;"></div>
+  {% endif %}
+  <img class="object-cover rounded-full h-36 w-36 mx-auto m-1 p-1 border-4 border-red-600" src="{% if author.profile_image %}{{ author.profile_image }}{% else %}/assets/img/user.jpg{% endif %}" alt="{{ author.name }}" />
 
   <div class="px-6 py-4">
     <div class="flex flex-col">
       <div class="font-bold text-xl text-center text-gray-800 hover:text-red-500 hover:cursor-pointer"><a href="{{author.url}}">{{ author.name }}</a></div>
-      <p class="text-gray-600 text-sm text-center">{{ author.position }}</p>
+      <p class="text-gray-600 text-sm text-center">{{ author.position | default: "undefined" }}</p>
     </div>
   </div>
 
   <div class="pb-5">
     <h4 class="text-sm text-center my-2 font-semibold text-gray-700">About me</h4>
-    <p class="text-xs mx-6 text-justify">{{ author.bio }}</p>
+    <p class="text-xs mx-6 text-justify">{{ author.bio | default: "Something we don't know!" }}</p>
   </div>
   <div class="bg-red-500 text-white flex flex-row justify-center w-full p-4">
     <div class="w-full flex flex-row items-center justify-evenly">

@@ -2,19 +2,21 @@
 layout: default
 ---
 <section class="max-w-sm h-auto mx-auto my-20 rounded-md overflow-hidden shadow-lg">
-  <div class="w-full h-24" style="background: url({{ page.profile_cover }}) no-repeat center; background-size: cover;"></div>
-  <img class="object-cover rounded-full h-36 w-36 mx-auto m-1 p-1 border-4 border-red-600" src="{{ page.profile_image }}" alt="{{ page.name }}" />
+  {% if site.author_cover %}
+  <div class="w-full h-24" style="background: url({% if page.profile_cover %}{{ page.profile_cover }}{% else %}/assets/img/off.jpg{% endif %}) no-repeat center; background-size: cover;"></div>
+  {% endif %}
+  <img class="object-cover rounded-full h-36 w-36 mx-auto m-1 p-1 border-4 border-red-600" src="{% if page.profile_image %}{{ page.profile_image }}{% else %}/assets/img/user.jpg{% endif %}" alt="{{ page.name }}" />
 
   <div class="px-6 py-4">
     <div class="flex flex-col">
       <div class="font-bold text-xl text-center text-gray-800 hover:text-red-500 hover:cursor-pointer">{{ page.name }}</div>
-      <p class="text-gray-600 text-sm text-center">{{ page.position }}</p>
+      <p class="text-gray-600 text-sm text-center">{{ page.position | default: "undefined" }}</p>
     </div>
   </div>
 
   <div class="pb-5">
     <h4 class="text-sm text-center my-2 font-semibold text-gray-700">About me</h4>
-    <p class="text-xs mx-6 text-justify">{{ page.bio }}</p>
+    <p class="text-xs mx-6 text-justify">{{ page.bio | default: "Something we don't know!" }}</p>
   </div>
   <div class="bg-red-500 text-white flex flex-row justify-center w-full p-4">
     <div class="w-full flex flex-row items-center justify-evenly">
