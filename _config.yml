@@ -25,8 +25,8 @@ youtube_username: 2HAAS
 # Contact form setup
 
 contact:
-  email: your-email@example.com # for contact mail to send mail (Or)
-  formspree_form_id:            # instead use formspree id from formspree.io
+  email: "your-email@example.com" # for contact mail to send mail (Or)
+  formspree_form_id: ""   # instead use formspree id from formspree.io, ex: xxxxxxxx
   subject: "Want to contact with you.."
   sent_message_url: '/contact/message-sent/'
   address: 'physical address if you have any to mention, replace that in _config.yml file'
@@ -34,19 +34,19 @@ contact:
 
 # URL setup
 
-baseurl: "" # the subpath of your site or repository name, e.g. /blog or /repo_name
+baseurl: "" # the subpath of your site or repository name if using github pages, e.g. /repo_name
 url: "" # main URL, e.g. 'https://yourname.github.io'
 
 # Site permissions
 
 show_hero: true # showing first post in big banner
 author_cover: true # showing author cover image in author page.
-
-
-
-
-
-
+#
+#
+#
+#
+#
+#
 # Comming soon with ads banner section
 # google adsense setup
 # ads_id: "ca-pub-xxxxxxxxxxxxxxx"
