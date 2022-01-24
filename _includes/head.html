@@ -11,7 +11,7 @@
     {%- if page.image -%}
         {%- assign image = page.image -%}
     {%- else -%}
-        {%- assign image = "/assets/img/blog-image.jpg" | prepend: site.baseurl | prepend: site.url -%}
+        {%- assign image = "https://dummyimage.com/600x315/000000/ff0e02.svg&text=Welcome+to+" | append : site.name -%}
     {%- endif -%}
 
     {%- assign description = '' -%}
