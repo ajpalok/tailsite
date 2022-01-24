@@ -34,9 +34,11 @@
         <li>
           <a class="text-gray-600 hover:text-gray-800" href="{{ site.url | append: site.baseurl }}/cookie-policy/">Cookie Policy</a>
         </li>
+        {% unless site.ads_id %}
         <li>
           <a class="text-gray-600 hover:text-gray-800" href="{{ site.url | append: site.baseurl }}/policy#privacy-policy">Privacy Policy</a>
         </li>
+        {% endunless %}
         <li>
           <a class="text-gray-600 hover:text-gray-800" href="{{ site.url | append: site.baseurl }}/disclaimer/">Disclaimer</a>
           </li>
