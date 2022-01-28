@@ -4,13 +4,13 @@ title: Contact Us
 description: Don't hesitate, just type what you want to say to us...
 ---
 
-{% if site.contact.formspree_form_id %}
 <section class="text-gray-600 body-font relative">
   <div class="container px-5 py-24 mx-auto">
     <div class="flex flex-col text-center w-full mb-12">
       <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">{{ page.title | default: "Talk to us" }}</h1>
       <p class="lg:w-2/3 mx-auto leading-relaxed text-base">{{ page.description | default: "Don't hesitate, just type what you want to say to us..." }}</p>
     </div>
+  {% if site.contact.formspree_form_id %}
     <form accept-charset="UTF-8" method="POST" action="https://formspree.io/{% if site.contact.formspree_form_id %}f/{{ site.contact.formspree_form_id }}{% else %}{{ site.contact.email }}{% endif %}" ref="contact">
       <div class="lg:w-1/2 md:w-2/3 mx-auto">
         <div class="flex flex-wrap -m-2">
@@ -51,6 +51,6 @@ description: Don't hesitate, just type what you want to say to us...
         </div>
       </div>
     </form>
+  {% endif %}
   </div>
 </section>
-{% endif %}
