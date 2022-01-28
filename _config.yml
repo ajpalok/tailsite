@@ -31,7 +31,7 @@ youtube_username: 2HAAS
 
 contact:
   email: "example@2haas.com" # for contact mail to send mail (Or)
-  formspree_form_id:   # instead use formspree id from formspree.io, ex: xxxxxxxx
+  formspree_form_id: xxxxxxxx # instead use formspree id from formspree.io, ex: xxxxxxxx
   subject: "Want to contact with you.."
   sent_message_url: '/contact/message-sent/'
   address: 'physical address if you have any to mention, replace that in _config.yml file'
