@@ -39,7 +39,7 @@ contact:
 
 # Site permissions
 
-show_hero: true # showing first post in big banner
+show_hero: false # showing first post in big banner
 author_cover: true # showing author cover image in author page.
 #
 #
