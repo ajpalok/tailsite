@@ -1,0 +1,41 @@
+---
+layout: page
+title: Sitemap
+description: This page is a sitemap for all.
+permalink: /sitemap/
+---
+
+<section class="text-gray-600 body-font">
+  <div class="container mx-auto px-5 py-10 flex items-center justify-center flex-col">
+    <div class="text-center lg:w-2/3 w-full">
+      <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">{{ page.title | capitalized | default: 'Sitemap' }}</h1>
+      <p class="mb-8 leading-relaxed">{{ page.description }}</p>
+    </div>
+  </div>
+</section>
+
+{% if site.posts %}
+  <center><h1>Posts</h1></center>
+  {% for post in site.posts %}
+    <ul>
+        <li class="p-5 text-red-500"><a href="{{ post.url | prepend: site.baseurl | prepend: site.url }}">{{post.title}}</a></li>
+    </ul>
+  {% endfor %}
+{% endif %}
+
+{% if site.categories %}
+  <center><h1>Category</h1></center>
+  {% for category in site.categories %}
+  <ul>
+    <li class="p-5 text-red-500"><a href="{{ category.url | prepend: site.baseurl | prepend: site.url }}">{{category.name}}</a></li>
+  </ul>
+  {% endfor %}
+{% endif %}
+{% if site.authors %}
+<center><h1>Author</h1></center>
+  {% for author in site.authors %}
+  <ul>
+    <li class="p-5 text-red-500"><a href="{{ author.url | prepend: site.baseurl | prepend: site.url }}">{{author.name}}</a></li>
+  </ul>
+  {% endfor %}
+{% endif %}

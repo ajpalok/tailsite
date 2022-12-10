@@ -1,0 +1,150 @@
+---
+layout: default
+---
+
+{%- if site.posts -%}
+  {%- assign posts = site.posts -%}
+{%- endif -%}
+{% if site.show_hero %}
+  {% assign offset = 1 %}
+{% else %}
+  {% assign offset = 0 %}
+{% endif %}
+
+
+{% if site.show_hero and site.posts.size > 0 %}
+  <!-- Hero -->
+  {% assign featured = posts.first %}
+  <section class="text-gray-600 body-font">
+    <div class="container mx-auto flex px-5 py-16 md:flex-row flex-col items-center">
+      <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 lg:pr-24 md:pr-16 mb-16 md:mb-0">
+      {%- if featured.image -%}
+  			<img class="object-cover object-center rounded" alt="{{featured.title}}'s hero image" src="{{featured.image}}">
+      {%- else -%}
+  			<img class="object-cover object-center rounded" alt=" no_hero" src="/assets/img/off.jpg">
+      {%- endif -%}
+  		</div>
+      <div class="lg:flex-grow md:w-1/2 flex flex-col md:items-start md:text-left items-center text-center">
+        <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">
+          {{featured.title}}
+        </h1>
+  		  {% assign category = site.categories | where: 'short_name' , featured.category | first %}
+        {% if category %}
+        <h2 class="tracking-widest text-md title-font font-medium text-red-400 mb-1">
+          <a href="{{category.url}}">{{category.name}}</a>
+        </h2>
+        {% endif %}
+        <p class="mb-8 leading-relaxed">
+          {{featured.excerpt | strip_html | truncate: 120}}
+        </p>
+        <div class="flex justify-center">
+          <a href="{{featured.url}}" class="inline-flex text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded text-lg">Read More</a>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endif %}
+  <!-- Posts -->
+{%- if posts and posts.size > offset -%}
+  <section class="text-gray-600 body-font">
+    <div class="container px-5 py-24 mx-auto">
+  		<div class="post-div loading-posts flex flex-wrap -m-4">
+      </div>
+    </div>
+  </section>
+{%- endif -%}
+
+{%- if site.posts.size == 0 -%}
+
+  <div class="w-full p-14 m-auto flex items-center justify-center bg-gray-100">
+    <p class="text-gray-900 text-xl body-font">There Is Currently No Post Available</p>
+  </div>
+
+{%- endif -%}
+
+
+{% assign social_urls = '' %}
+{% if site.github_username %}
+    {% assign social_urls = social_urls | append: '"https://github.com/' | append: site.github_username | append: '",' %}
+{% endif %}
+{% if site.facebook_username %}
+    {% assign social_urls = social_urls | append: '"https://www.facebook.com/' | append: site.facebook_username | append: '",' %}
+{% endif %}
+{% if site.twitter_username %}
+    {% assign social_urls = social_urls | append: '"https://twitter.com/' | append: site.twitter_username | append: '",' %}
+{% endif %}
+{% if site.youtube_username %}
+    {% assign social_urls = social_urls | append: '"https://youtube.com/' | append: site.medium_username | append: '",' %}
+{% endif %}
+{% if site.instagram_username %}
+    {% assign social_urls = social_urls | append: '"https://www.instagram.com/' | append: site.instagram_username | append: '",' %}
+{% endif %}
+{% if site.linkedin_username %}
+    {% assign social_urls = social_urls | append: '"https://www.linkedin.com/in/' | append: site.linkedin_username | append: '",' %}
+{% endif %}
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "WebPage",
+  "mainEntity": {
+    "@type": "Blog",
+    "name": "{{ site.name }}",
+    "headline": "{{ site.title }}",
+    "description": "{{ site.description }}",
+    "url": "{{ site.url }}{{site.baseurl}}/",
+    "inLanguage": "{{ site.language }}",
+    "isFamilyFriendly": "true",
+    "creator": {
+        "@type": "Organization",
+        "name": "{{ site.name }}",
+        "url": "{{ site.url }}{{site.baseurl}}/",
+        "sameAs": [
+            {{ social_urls | split: "," | join: "," }}
+        ]
+    },
+    "mainEntity": {
+        "@type": "ItemList",
+        "itemListElement": [
+        {% assign limit = 8 %}
+        {%- assign posts = site.posts -%}
+        {% for post in posts limit: limit %}
+          {% assign author = site.authors | where: "short_name", post.author | first %}
+          {% assign category = site.categories | where: "short_name", post.category | first %}
+          {
+              "@type": "BlogPosting",
+              "name": "{{ post.title }}",
+              "headline": "{{ post.subtitle }}",
+              "description": "{{ post.description }}",
+              "image": "{{ post.image }}",
+              "url": "{{ post.url | prepend: site.baseurl | prepend: site.url }}",
+              "inLanguage": "{{ site.language }}",
+              "dateCreated": "{{ post.date | date: '%Y-%m-%d/' }}",
+              "datePublished": "{{ post.date | date: '%Y-%m-%d/' }}",
+              "dateModified": "{{ post.date | date: '%Y-%m-%d/' }}",
+              "author": {
+                  "@type": "Person",
+                  "name": "{{ author.name }}",
+                  "url": "{{ author.url | prepend: site.baseurl | prepend: site.url }}"
+              },
+              "publisher": {
+                  "@type": "Organization",
+                  "name": "{{ site.name }}",
+                  "url": "{{ site.url }}{{site.baseurl}}/",
+                  "logo": {
+                      "@type": "ImageObject",
+                      "url": "{{ site.url }}{{site.baseurl}}/assets/img/blog-image.png",
+                      "width": "600",
+                      "height": "315"
+                  }
+              },
+              "mainEntityOfPage": "True",
+              "genre": "{{ category.name | capitalize }}",
+	        "articleSection": "{{ category.nane | capitalize }}",
+              "keywords": [{{ post.tags | join: '","' | append: '"' | prepend: '"' }}]
+          }{% if forloop.last == false  %},{% endif %}
+      {% endfor %}
+      ]
+    }
+  }
+}
+</script>

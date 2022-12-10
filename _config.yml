@@ -1,0 +1,107 @@
+# Welcome to Jekyll!
+# Site settings
+
+name: Tailsite
+title: Tailsite | Template by 2HAAS
+description: >-
+  This template is made using with only TailwindCSS. Fork or clone our repository to get this beautiful template.
+tags:
+  -Jekyll
+  -Template
+  -Tailwindcss
+  -Tailsite
+
+# URL setup
+
+baseurl: "" # the subpath of your site or repository name if using github pages, e.g. /repo_name
+url: "https://tailsite.2haas.com" # main URL, e.g. 'https://yourname.github.io'
+
+# Social Media ID's for the site
+
+github_username: 2HAAS
+facebook_username: 2haas
+twitter_username: 2haas_tw
+instagram_username: 2haas_insta
+linkedin_username: 2haas
+youtube_username: 2HAAS
+
+# Contact form setup
+
+contact:
+  email: "example@2haas.com" # for contact mail to send mail (Or)
+  formspree_form_id: xxxxxxxx # instead use formspree id from formspree.io, ex: xxxxxxxx
+  subject: "Want to contact with you.."
+  sent_message_url: '/contact/message-sent/'
+  address: 'physical address if you have any to mention, replace that in _config.yml file'
+
+
+# Site permissions
+
+show_hero: true # showing first post in big banner
+author_cover: true # showing author cover image in author page.
+#
+#
+#
+#
+#
+#
+# Comming soon with ads banner section
+# google adsense setup
+# ads_id: "ca-pub-xxxxxxxxxxxxxxx"
+
+# Sites Necessary Configuration
+
+language: "en"
+
+# posts permalink
+permalink: "/:title/"
+
+#comming soon pagination for particular part
+# pagination:
+#   enabled: true
+
+# Author & Category setup
+collections:
+  authors:
+    output: true
+    sidebar_label: Authors
+  categories:
+    output: true
+    sidebar_label: Categories
+
+
+defaults:
+  -
+    scope:
+      path: ""
+      type: "authors"
+    values:
+      layout: "author"
+  -
+    scope:
+      path: ""
+      type: "categories"
+    values:
+      layout: "category"
+      
+  -
+    scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+
+markdown: kramdown
+markdown_ext: "markdown, mkdown, mkdn, mkd, md"
+highlighter: rouge
+sass:
+    style: compressed
+compress_html:
+  clippings: []
+  comments: []
+  endings: []
+  ignore:
+    envs: []
+  blanklines: false
+  profile: false
+  startings: []

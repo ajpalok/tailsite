@@ -1,0 +1,46 @@
+{% assign social_urls = '' %}
+{% if site.github_username %}
+    {% assign social_urls = social_urls | append: '"https://github.com/' | append: site.github_username | append: '",' %}
+{% endif %}
+{% if site.facebook_username %}
+    {% assign social_urls = social_urls | append: '"https://www.facebook.com/' | append: site.facebook_username | append: '",' %}
+{% endif %}
+{% if site.twitter_username %}
+    {% assign social_urls = social_urls | append: '"https://twitter.com/' | append: site.twitter_username | append: '",' %}
+{% endif %}
+{% if site.youtube_username %}
+    {% assign social_urls = social_urls | append: '"https://youtube.com/' | append: site.medium_username | append: '",' %}
+{% endif %}
+{% if site.instagram_username %}
+    {% assign social_urls = social_urls | append: '"https://www.instagram.com/' | append: site.instagram_username | append: '",' %}
+{% endif %}
+{% if site.linkedin_username %}
+    {% assign social_urls = social_urls | append: '"https://www.linkedin.com/in/' | append: site.linkedin_username | append: '",' %}
+{% endif %}
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "{{ site.name }}",
+  "description": "{{ site.description }}",
+  "url": "{{ site.url }}{{site.baseurl}}/",
+  "logo": {
+      "@type": "ImageObject",
+      "url": "{{ site.url }}{{site.baseurl}}/assets/img/icons/mediumtile.png",
+      "width": "600",
+      "height": "315"
+  },
+  "sameAs": [
+    {{ social_urls | split: "," | join: "," }}
+  ]
+}
+</script>
+
+{%- if page.url == site.url or page.url == "/" or page.url == "/index.html" -%}
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+	<script src="/assets/js/all_posts.js"></script>
+{%- endif -%}
+
+{% if site.ads_id %}
+<script data-ad-client="{{ site.ads_id }}" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+{% endif %}

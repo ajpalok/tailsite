@@ -1,0 +1,27 @@
+---
+layout: page
+title: Categories
+description: Here comes our list of Categories of 2HAAS's posts..
+---
+
+<section class="text-gray-600 body-font">
+  <div class="container mx-auto px-5 py-10 flex items-center justify-center flex-col">
+    <div class="text-center lg:w-2/3 w-full">
+      <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">{{ page.title | capitalized }}</h1>
+      <p class="mb-8 leading-relaxed">{{ page.description }}</p>
+    </div>
+  </div>
+</section>
+
+
+<table class="w-full">
+  {% for category in site.categories %}
+  <tr>
+    <td class="w-full text-xl text-center p-5">
+      <a class="text-red-500" href="{{ category.url }}">
+        <p class="text-xl text-center">{{ category.name }}</p>
+      </a>
+    </td>
+  </tr>
+  {% endfor %}
+</table>
