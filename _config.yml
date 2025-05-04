@@ -14,7 +14,7 @@ tags:
 # URL setup
 
 baseurl: "/tailsite" # the subpath of your site or repository name if using github pages, e.g. /repo_name
-url: "https://tailsite.2haas.com" # main URL, e.g. 'https://yourname.github.io'
+url: "https://ajpalok.github.io" # main URL, e.g. 'https://yourname.github.io'
 
 # Social Media ID's for the site
 
