@@ -24,7 +24,7 @@ description: Meet our respective Members and content creators of our Family..
 
   <div class="px-6 py-4">
     <div class="flex flex-col">
-      <div class="font-bold text-xl text-center text-gray-800 hover:text-red-500 hover:cursor-pointer"><a href="{{author.url}}">{{ author.name }}</a></div>
+      <div class="font-bold text-xl text-center text-gray-800 hover:text-red-500 hover:cursor-pointer"><a href="{{author.url| prepend: site.baseurl}}">{{ author.name }}</a></div>
       <p class="text-gray-600 text-sm text-center">{{ author.position | default: "undefined" }}</p>
     </div>
   </div>

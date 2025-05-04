@@ -31,14 +31,14 @@ layout: default
   		  {% assign category = site.categories | where: 'short_name' , featured.category | first %}
         {% if category %}
         <h2 class="tracking-widest text-md title-font font-medium text-red-400 mb-1">
-          <a href="{{category.url}}">{{category.name}}</a>
+          <a href="{{category.url | prepend: site.baseurl}}">{{category.name}}</a>
         </h2>
         {% endif %}
         <p class="mb-8 leading-relaxed">
           {{featured.excerpt | strip_html | truncate: 120}}
         </p>
         <div class="flex justify-center">
-          <a href="{{featured.url}}" class="inline-flex text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded text-lg">Read More</a>
+          <a href="{{featured.url| prepend: site.baseurl}}" class="inline-flex text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded text-lg">Read More</a>
         </div>
       </div>
     </div>

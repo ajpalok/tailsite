@@ -18,7 +18,7 @@ description: Here comes our list of Categories of 2HAAS's posts..
   {% for category in site.categories %}
   <tr>
     <td class="w-full text-xl text-center p-5">
-      <a class="text-red-500" href="{{ category.url }}">
+      <a class="text-red-500" href="{{ category.url | prepend: site.baseurl }}">
         <p class="text-xl text-center">{{ category.name }}</p>
       </a>
     </td>

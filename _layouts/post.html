@@ -16,7 +16,7 @@ layout: default
     		  {% endif %}
     		  {% assign category = site.categories | where: 'short_name' , page.category | first %}
           {% if category %}
-            <h2 class="text-base title-font font-medium text-red-500 mb-1 py-5"><a href="{{category.url}}">{{category.name}}</a></h2>
+            <h2 class="text-base title-font font-medium text-red-500 mb-1 py-5"><a href="{{category.url|prepend: site.baseurl}}">{{category.name}}</a></h2>
     		  {% endif %}
             <h1 class="title-font text-xl font-medium text-gray-900 mb-3">{{ page.title }}</h1>
             <div class="max-w-md leading-relaxed mb-5 prose prose-a:text-red-500 hover:prose-a:text-red-600">
@@ -33,7 +33,7 @@ layout: default
 {% assign author = site.authors | where: short_name , page.author | first %}
 {% if author %}
   <div class="w-full p-14 m-auto flex items-center justify-center bg-gray-100">
-    <a class="flex title-font items-center md:justify-start justify-center inline-flex" href="{{ author.url }}">
+    <a class="flex title-font items-center md:justify-start justify-center inline-flex" href="{{ author.url | prepend: site.baseurl }}">
       <img alt="{{ author.name }}" src="{{ author.profile_image }}" class="w-32 h-32 rounded-full flex-shrink-0 object-cover object-center">
       <span class="flex-grow flex flex-col pl-5">
         <span class="title-font text-2xl text-red-900">{{ author.name }}</span>
