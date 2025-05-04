@@ -2,7 +2,7 @@
 
 ![Tailsite Template Cover Image](https://dummyimage.com/920x400/ff2137/ffffff.gif&text=+++++++Tailsite+++++++)
 
-See the [demo here](https://tailsite.2haas.com/).
+See the [demo here](https://ajpalok.github.io/tailsite/).
 
 ## What is it?
 
