@@ -28,7 +28,7 @@ youtube_username: 2HAAS
 # Contact form setup
 
 contact:
-  email: "example@2haas.com" # for contact mail to send mail (Or)
+  email: "contact@2haas.com" # for contact mail to send mail (Or)
   formspree_form_id: xxxxxxxx # instead use formspree id from formspree.io, ex: xxxxxxxx
   subject: "Want to contact with you.."
   sent_message_url: '/contact/message-sent/'

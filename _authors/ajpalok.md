@@ -7,9 +7,9 @@ bio: I specialize in designing and developing user interfaces and digital produc
 position: Chief Editor
 email: your-mail@domain.com
 facebook_username: ajpalok.fb
-twitter_username: aj_palok
+twitter_username: ajpalok
 instagram_username: ajpalok_insta
 linkedin_username: ajpalok
 github_username: ajpalok
-youtube_username: 2haas
+youtube_username: "@ajpalok"
 ---
